@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, FlatList } from 'react-native';
+import { StyleSheet, Text, View, FlatList, TouchableOpacity} from 'react-native';
 
 export default function App() {
 
@@ -22,9 +22,10 @@ export default function App() {
 
           <Text style={styles.item}>{item.titulo}</Text>
         )}
-
-
       />
+
+      <TouchableOpacity style={styles.botao}><Text style={styles.textoBotao}>Adicionar tarefa</Text></TouchableOpacity>
+
     </View>
   );
 }
@@ -59,5 +60,23 @@ const styles = StyleSheet.create({
     padding: 10,
   },
 
+  botao: {
+    margin: 15,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: "blue",
+    borderRadius: 100000000000,
+    height: 100,
+    width: '70%'
+
+  },
+
+  textoBotao: {
+    color: 'white',
+    fontSize: 40,
+    fontWeight: 'bold'
+
+  }
 
 });
