@@ -14,6 +14,20 @@ export default function App() {
   const [novaTarefa, setnovaTarefa] = useState('')
 
 
+
+function addTarefa(){
+
+
+  const task =[{
+    id: String(Date.now()),
+    titulo: novaTarefa
+  }]
+
+  
+}
+
+
+
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Lista de tarefas</Text>
@@ -24,7 +38,7 @@ export default function App() {
         renderItem={({ item }) => (
 
 
-          <Text style={styles.item}>{novaTarefa}</Text>
+          <Text style={styles.item}>{item.titulo}</Text>
         )}
       />
 
