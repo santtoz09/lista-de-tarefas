@@ -1,14 +1,18 @@
-import { StyleSheet, Text, View, FlatList, TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, View, FlatList, TouchableOpacity, TextInput } from 'react-native';
+import { useState } from 'react';
+
 
 export default function App() {
 
-  const tarefas = [
+  const [tarefas, setTarefas] = useState([
     { id: "1", titulo: "Aprender Git" },
     { id: "2", titulo: "Aprender fazer Comit" },
     { id: "3", titulo: "Aprender utilizar o GitHub" },
     { id: "4", titulo: "fazer git clone" },
+  ])
 
-  ]
+  const [novaTarefa, setnovaTarefa] = useState('')
+
 
   return (
     <View style={styles.container}>
@@ -20,8 +24,18 @@ export default function App() {
         renderItem={({ item }) => (
 
 
-          <Text style={styles.item}>{item.titulo}</Text>
+          <Text style={styles.item}>{novaTarefa}</Text>
         )}
+      />
+
+
+
+      <TextInput
+        style={styles.input}
+        value={novaTarefa}
+        onChangeText= { (texto) => setnovaTarefa(texto) }
+        placeholder='Digite uma tarefa'
+        textAlign='center'
       />
 
       <TouchableOpacity style={styles.botao}><Text style={styles.textoBotao}>Adicionar tarefa</Text></TouchableOpacity>
@@ -66,8 +80,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: "blue",
-    borderRadius: 100000000000,
-    height: 100,
+    borderRadius: 100,
+    height: 80,
     width: '70%'
 
   },
@@ -77,6 +91,18 @@ const styles = StyleSheet.create({
     fontSize: 40,
     fontWeight: 'bold'
 
+  },
+
+  input: {
+    borderWidth: 1,
+    width: '90%',
+    margin: 15,
+    borderColor: '#606060',
+    padding: 10,
+    marginBottom: 10,
+    borderRadius: 50,
+    backgroundColor: 'white',
+    textAlign: 'center'
   }
 
 });
