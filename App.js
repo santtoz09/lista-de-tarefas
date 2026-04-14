@@ -11,22 +11,28 @@ export default function App() {
     { id: "4", titulo: "fazer git clone" },
   ])
 
-  const [novaTarefa, setnovaTarefa] = useState('')
+  const [task, setTask] = useState('')
 
 
 
-function addTarefa(){
 
 
-  const task =[{
-    id: String(Date.now()),
-    titulo: novaTarefa
-  }]
+  function addTarefa() {
+
+
+    const novaTarefa = {
+      id: String(Date.now()),
+      titulo: task
+    }
+
+
+
+
+  setTarefas([...tarefas,novaTarefa]);
+  setnovaTarefa("")
 
   
-}
-
-
+  }
 
   return (
     <View style={styles.container}>
@@ -46,13 +52,13 @@ function addTarefa(){
 
       <TextInput
         style={styles.input}
-        value={novaTarefa}
-        onChangeText= { (texto) => setnovaTarefa(texto) }
+        onChangeText={(texto) => setTask(texto)}
         placeholder='Digite uma tarefa'
+        value={task}
         textAlign='center'
       />
 
-      <TouchableOpacity style={styles.botao}><Text style={styles.textoBotao}>Adicionar tarefa</Text></TouchableOpacity>
+      <TouchableOpacity onPress={addTarefa} style={styles.botao}><Text style={styles.textoBotao}>Adicionar tarefa</Text></TouchableOpacity>
 
     </View>
   );
@@ -82,7 +88,7 @@ const styles = StyleSheet.create({
   item: {
     color: "white",
     fontSize: 30,
-    borderRadius: 12,
+    borderRadius: 6,
     backgroundColor: '#3b5ba449',
     margin: 20,
     padding: 10,
@@ -94,9 +100,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: "blue",
-    borderRadius: 100,
+    borderRadius: 6,
     height: 80,
-    width: '70%'
+    width: '90%'
 
   },
 
@@ -114,7 +120,7 @@ const styles = StyleSheet.create({
     borderColor: '#606060',
     padding: 10,
     marginBottom: 10,
-    borderRadius: 50,
+    borderRadius: 6,
     backgroundColor: 'white',
     textAlign: 'center'
   }
